@@ -1,0 +1,21 @@
+version: "2"
+
+services:
+  application:
+    image: evilroman/hello-world-app
+    volumes:
+      - data-volume:/webapps
+  tomcat:
+    image: evilroman/tomcat:8.0
+    volumes:
+      - data-volume:/usr/local/tomcat/webapps
+    ports:
+     - "8888:8080"
+  nginx:
+    image: evilroman/nginx
+    ports:
+     - "80:80"
+     - "443:443"
+
+volumes:
+  data-volume:
